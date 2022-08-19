@@ -8,6 +8,9 @@ from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
 from app import forms, views
 
+admin.site.site_header = 'Forest Mensuration System'
+admin.site.index_title = 'System Administration'  
+
 
 urlpatterns = [
     path('', views.home, name='home'),
