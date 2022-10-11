@@ -1,5 +1,4 @@
-from tkinter import S
-from weakref import proxy
+
 from django.contrib import admin
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
