@@ -10,10 +10,10 @@ from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.contrib.auth.models import User
 
-from numpy import False_, True_
-from psycopg2 import Date
-from regex import S
-from sqlalchemy import null
+
+
+
+
 
 # Create your models here.
 
