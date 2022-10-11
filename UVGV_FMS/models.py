@@ -9,7 +9,7 @@ from random import choices
 from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.contrib.auth.models import User
-from matplotlib.ticker import PercentFormatter
+
 from numpy import False_, True_
 from psycopg2 import Date
 from regex import S
