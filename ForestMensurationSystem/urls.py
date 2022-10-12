@@ -3,17 +3,22 @@ Definition of urls for ForestMensurationSystem.
 """
 
 from datetime import datetime
-from django.urls import path
+from django.urls import include,path
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
 from UVGV_FMS import forms, views
-
+import UVGV_FMS 
+from rest_framework import routers
 
 admin.site.site_header = 'Forest Mensuration System'
 admin.site.index_title = 'Forest Mensuration System Administration'
 admin.site.site_title = "FMS"
 
+router = routers.DefaultRouter(trailing_slash=False)
+router.register('ListStockingdetails', views.ListStocking)
+
 urlpatterns = [
+    path('fmsapi', include(router.urls)),
     path('', admin.site.urls),
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
@@ -31,4 +36,5 @@ urlpatterns = [
          name='login'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls),
+    path('UVGV_FMS/api/',include('rest_framework.urls')),
 ]
