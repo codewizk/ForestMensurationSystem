@@ -68,7 +68,7 @@ class Espacement(models.Model):
 
 class SubCompartmentRegister(models.Model):
     
-    SubCompartment_Name = models.CharField(max_length = 10,verbose_name="SubCompartment Name ",primary_key=True)
+    SubCompartment_Name = models.CharField(max_length = 10,verbose_name="Block Name ",primary_key=True)
     Compartment_Name = models.CharField(max_length = 10)
     Hectares = models.FloatField()
     Specie = models.ForeignKey(Specie, verbose_name="Specie", on_delete=models.CASCADE,default='Eucalyptus tereticornis',)    
@@ -129,7 +129,7 @@ class SubCompartmentRegister(models.Model):
 
 class Stocking(models.Model):
     id = models.AutoField(primary_key=True)
-    SubCompartment_Name= models.ForeignKey(SubCompartmentRegister, verbose_name="SubCompartment Name", on_delete=models.CASCADE,default="15B1S1")
+    SubCompartment_Name= models.ForeignKey(SubCompartmentRegister, verbose_name="Block Name", on_delete=models.CASCADE,default="15B1S1")
     Date = models.DateField(auto_now_add=True)
     Surviving = models.IntegerField(null=True,)
     Dead = models.IntegerField()

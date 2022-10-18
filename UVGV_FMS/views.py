@@ -7,14 +7,19 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from rest_framework import serializers
 from rest_framework import generics
-from .models import Stocking
-from .serializers import stockingserializer
+from .models import Stocking, SubCompartmentRegister
+from .serializers import stockingserializer,compartmentregisterserializer
 from rest_framework import viewsets
 
 
 class ListStocking(viewsets.ModelViewSet):
     queryset= Stocking.objects.all()
     serializer_class= stockingserializer
+
+class ListCompartment(viewsets.ModelViewSet):
+
+    queryset=SubCompartmentRegister.objects.all()
+    serializer_class= compartmentregisterserializer
 '''' 
 class detailStocking(generics.RetrieveUpdateDestroyAPIView):
     queryset= models.Stocking.objects.all()

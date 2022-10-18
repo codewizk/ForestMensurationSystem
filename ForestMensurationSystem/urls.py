@@ -16,6 +16,7 @@ admin.site.site_title = "FMS"
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register('ListStockingdetails', views.ListStocking)
+router.register('ListCompartmentdetails',views.ListCompartment)
 
 urlpatterns = [
     path('fmsapi', include(router.urls)),
