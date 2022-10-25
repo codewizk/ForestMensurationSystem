@@ -43,10 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    """
     'django.contrib.sites',
     'rest_framework.authtoken',
     'dj_rest_auth',
-    
+    """
 ]
 
 # Middleware framework
