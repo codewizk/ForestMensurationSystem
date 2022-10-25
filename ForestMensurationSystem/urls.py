@@ -21,7 +21,7 @@ router.register('ListFlutterUserdetails',views.ListFlutterUsers)
 
 urlpatterns = [
     path('fmsapi', include(router.urls)),
-    path('dj-rest-auth/', include('dj_rest_auth.urls')),
+    
     path('', admin.site.urls),
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
