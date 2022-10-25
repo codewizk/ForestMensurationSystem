@@ -2,6 +2,7 @@
 Definition of models.
 """
 
+
 from decimal import Rounded
 from email.policy import default
 
@@ -9,6 +10,8 @@ from random import choices
 from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import PasswordInput
+from django.urls import reverse
 
 
 
@@ -143,5 +146,18 @@ class Stocking(models.Model):
         blockname = (Stocking.objects.filter(Surviving__isnull=False).order_by('Date').first().SubCompartment_Name)
         
         return blockname
+
+class FlutterUser(models.Model):
+    UserName = models.CharField(max_length = 150,primary_key=True)
+    Email = models.EmailField(max_length=250)
+    Password = models.CharField(max_length = 50)
+    
+
+    
+    def __str__(self):
+        return self.UserName
+
+    
+
    
 

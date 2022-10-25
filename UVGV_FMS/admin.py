@@ -3,7 +3,7 @@ from django.contrib import admin
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
-from .models import Specie, User, SubCompartmentRegister,PlantingSeason,Project,WorkingCircle,Espacement,Stocking,Specie
+from .models import Specie, User, SubCompartmentRegister,PlantingSeason,Project,WorkingCircle,Espacement,Stocking,Specie,FlutterUser
 from django.contrib.auth.models import User, Group
 
 
@@ -117,7 +117,11 @@ class UserAdmin(AuthUserAdmin):
     add_form = MyUserCreationForm
     update_form_class = UserChangeForm
 
+class FlutterUserAdmin(admin.ModelAdmin):
+    model= FlutterUser
+    list_display= ['UserName','Email','Password']
 
+admin.site.register(FlutterUser,FlutterUserAdmin)
 admin.site.register(SubCompartmentRegister, SubCompartmentRegisterAdmin,)
 admin.site.register(StockingReport, StockingReportAdmin,)
 admin.site.register(PlantingSeason,PlantingSeasonAdmin)

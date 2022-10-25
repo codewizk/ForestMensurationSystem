@@ -7,8 +7,8 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from rest_framework import serializers
 from rest_framework import generics
-from .models import Stocking, SubCompartmentRegister
-from .serializers import stockingserializer,compartmentregisterserializer
+from .models import Stocking, SubCompartmentRegister,FlutterUser
+from .serializers import stockingserializer,compartmentregisterserializer,FlutterUserserializer
 from rest_framework import viewsets
 
 
@@ -20,6 +20,12 @@ class ListCompartment(viewsets.ModelViewSet):
 
     queryset=SubCompartmentRegister.objects.all()
     serializer_class= compartmentregisterserializer
+
+class ListFlutterUsers(viewsets.ModelViewSet):
+    queryset=FlutterUser.objects.all()
+    serializer_class= FlutterUserserializer
+
+
 '''' 
 class detailStocking(generics.RetrieveUpdateDestroyAPIView):
     queryset= models.Stocking.objects.all()
