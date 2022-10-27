@@ -12,6 +12,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.forms import PasswordInput
 from django.urls import reverse
+from sqlalchemy import null
 
 
 
@@ -127,25 +128,6 @@ class SubCompartmentRegister(models.Model):
         return (Stocking.objects.filter(SubCompartment_Name=self.SubCompartment_Name,Surviving__isnull=False).last().Date)
     
 
-  
-  
-
-class Stocking(models.Model):
-    id = models.AutoField(primary_key=True)
-    SubCompartment_Name= models.ForeignKey(SubCompartmentRegister, verbose_name="Block Name", on_delete=models.CASCADE,default="15B1S1")
-    Date = models.DateField(auto_now_add=True)
-    Surviving = models.IntegerField(null=True,)
-    Dead = models.IntegerField()
-
-    def __int__(self):
-        return self.id
-    def __unicode__(self):
-       return self.id
-
-    def block(self):
-        blockname = (Stocking.objects.filter(Surviving__isnull=False).order_by('Date').first().SubCompartment_Name)
-        
-        return blockname
 
 class FlutterUser(models.Model):
     UserName = models.CharField(max_length = 150,primary_key=True)
@@ -159,5 +141,25 @@ class FlutterUser(models.Model):
 
     
 
+
+  
+
+class Stocking(models.Model):
+    id = models.AutoField(primary_key=True)
+    SubCompartment_Name= models.ForeignKey(SubCompartmentRegister, verbose_name="Block Name", on_delete=models.CASCADE,default="15B1S1")
+    Date = models.DateField(auto_now_add=True)
+    Surviving = models.IntegerField(null=True,)
+    Dead = models.IntegerField()
+    UserName= models.ForeignKey(FlutterUser, verbose_name='Data Collector', on_delete=models.DO_NOTHING,null=True)
+
+    def __int__(self):
+        return self.id
+    def __unicode__(self):
+       return self.id
+
+    def block(self):
+        blockname = (Stocking.objects.filter(Surviving__isnull=False).order_by('Date').first().SubCompartment_Name)
+        
+        return blockname
    
 

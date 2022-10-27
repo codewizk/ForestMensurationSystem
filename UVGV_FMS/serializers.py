@@ -6,7 +6,7 @@ from .models import Stocking,SubCompartmentRegister,FlutterUser
 class stockingserializer(serializers.ModelSerializer):
     class Meta:
         model= Stocking
-        fields= ('id','SubCompartment_Name','Date','Surviving','Dead',)
+        fields= ('id','SubCompartment_Name','Date','Surviving','Dead','DataCollector')
 
 class compartmentregisterserializer(serializers.ModelSerializer):
     class Meta:

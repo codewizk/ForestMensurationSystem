@@ -60,8 +60,8 @@ class EspacementsAdmin(admin.ModelAdmin):
 
 class StockingAdmin(admin.ModelAdmin):
     model = Stocking
-    list_display = ['SubCompartment_Name','Date','Surviving']
-    search_fields = ('SubCompartment_Name', 'Date','Surviving','Dead',)
+    list_display = ['SubCompartment_Name','Date','Surviving','UserName']
+    search_fields = ('SubCompartment_Name', 'Date','Surviving','Dead','UserName')
 
 class StockingReport(SubCompartmentRegister):
 
