@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 import posixpath
 from trace import Trace
-'''import  django_heroku'''
+import  django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -133,4 +133,4 @@ USE_TZ = True
 CORS_ALLOW_ALL_ORIGINS= True
 STATIC_URL = '/static/'
 STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
-'''django_heroku.settings(locals())'''
+django_heroku.settings(locals())
