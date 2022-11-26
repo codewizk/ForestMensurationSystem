@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'UVGV_FMS',
     'rest_framework',
     'corsheaders',
-    #'django_extensions',
+    'django_extensions',
     'import_export',
     #'admin_reorder',
     
