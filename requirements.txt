@@ -13,6 +13,8 @@ whitenoise==5.0.1
 PyYAML==5.4
 django-cors-headers==3.11.0
 
-
+django-extensions
+django-import-export
+keras
 
 
