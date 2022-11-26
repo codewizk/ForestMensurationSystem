@@ -17,7 +17,7 @@ django-extensions
 django-import-export
 keras
 tensorflow
-PIL
+
 
 
 
