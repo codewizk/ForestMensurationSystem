@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 import posixpath
 from trace import Trace
-import  django_heroku
+'''import  django_heroku'''
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,12 +27,23 @@ SECRET_KEY = 'd617accf-35e3-4c90-a6b7-3e370b549e55'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+SESSION_COOKIE_AGE = 180
+
+SESSION_SAVE_EVERY_REQUEST = True
+
 ALLOWED_HOSTS = []
+
 
 # Application references
 # https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-INSTALLED_APPS
 INSTALLED_APPS = [
-    'UVGV_FMS',
+    
+    # 'grappelli',
+    #'admin_interface',
+     
+    'colorfield',
     
     # Add your apps here to enable them
     'django.contrib.admin',
@@ -41,8 +52,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'UVGV_FMS',
     'rest_framework',
-    'corsheaders',    
+    'corsheaders',
+    'django_extensions',
+    'import_export',
+    'admin_reorder',
+    
+       
     #'django.contrib.sites',
     #'rest_framework.authtoken',
     #'dj_rest_auth',
@@ -71,7 +88,7 @@ ROOT_URLCONF = 'ForestMensurationSystem.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates/"),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,6 +96,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
             ],
         },
     },
@@ -118,7 +136,32 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ]
 }
+MIDDLEWARE_CLASSES = (
+    
+    'admin_reorder.middleware.ModelAdminReorder',
+    
+)
+ADMIN_REORDER = (
+    # Keep original label and models
+    'sites',
 
+    # Rename app
+    {'app': 'auth', 'label': 'Authorisations'},
+
+    # Reorder app models
+    {'app': 'auth', 'models': ('auth.User', 'auth.Group')},
+
+   
+
+    # Cross-linked models
+    {'app': 'auth', 'models': ('auth.User', 'sites.Site')},
+
+    # models with custom name
+    {'app': 'auth', 'models': (
+        'auth.Group',
+        {'model': 'auth.User', 'label': 'Staff'},
+    )},
+)
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 LANGUAGE_CODE = 'en-us'
@@ -133,4 +176,7 @@ USE_TZ = True
 CORS_ALLOW_ALL_ORIGINS= True
 STATIC_URL = '/static/'
 STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
-django_heroku.settings(locals())
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
+'''django_heroku.settings(locals())'''

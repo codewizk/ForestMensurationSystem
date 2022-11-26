@@ -1,0 +1,26 @@
+{% extends "UVGV_FMS/layout.html" %}
+
+{% block content %}
+
+
+<table id="dtBasicExample" class="table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            {% for key in context %}
+            <th>{{ key }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+       
+        <tr>
+            {% for values in context.items %}
+            <td>{{ values }}</td>
+            {% endfor %}
+        </tr>
+        
+    </tbody>
+</table>
+
+
+{% endblock %}

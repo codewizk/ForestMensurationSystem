@@ -1,0 +1,33 @@
+{% extends "UVGV_FMS/layout.html" %}
+
+{% block content %}
+<div class="form-group ">
+<form action="predict" method="post" enctype="multipart/form-data" class="form-horizontal">
+    {% csrf_token %}
+    <input  class="form-control"  type="file" name="filePath"/>
+    <br/>
+    <button class="btn btn-default" type="submit" name="submit" value="Test"> Upload</button>
+
+</form>
+</div>
+<table id="dtBasicExample" class="table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            {% for key in context %}
+            <th>{{ key }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+       
+        <tr>
+            {% for key,values in context.items %}
+            <td>{{ values }}</td>
+            {% endfor %}
+        </tr>
+        
+    </tbody>
+</table>
+
+
+{% endblock %}

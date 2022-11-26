@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Stocking,SubCompartmentRegister,FlutterUser
+from .models import Stocking,SubCompartmentRegister,FlutterUser,Result,pickupload
 
 
 
@@ -17,3 +17,13 @@ class FlutterUserserializer(serializers.ModelSerializer):
     class Meta:
         model= FlutterUser
         fields=('UserName','Email','Password')
+
+class tensorfloeserilalizers(serializers.ModelSerializer):
+    class Meta:
+        model= Result
+        fields= ('imagepath','image','predicted','confidence','saved')
+
+class tensorflowapiserializers(serializers.ModelSerializer):
+    class Meta:
+        model=pickupload
+        fields= "__all__"

@@ -18,10 +18,17 @@ router = routers.DefaultRouter(trailing_slash=False)
 router.register('ListStockingdetails', views.ListStocking)
 router.register('ListCompartmentdetails',views.ListCompartment)
 router.register('ListFlutterUserdetails',views.ListFlutterUsers)
+router.register('Listvolumeresultdetails',views.Listvolumeresult)
+router.register('listapitensordetails',views.Listtensorflow)
 
 urlpatterns = [
+    path('home', views.index, name='home'),
     path('fmsapi', include(router.urls)),
+    path('predict', views.predictImage, name='predict'),
+    path('viewdb', views.viewDataBase, name='view'),
     
+
+    path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('', admin.site.urls),
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
