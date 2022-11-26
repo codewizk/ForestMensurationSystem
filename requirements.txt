@@ -22,6 +22,6 @@ django-flat-responsive==2.0
 django-flat-theme==1.1.4
 django-grappelli==3.0.3
 
-django-import-export==3.0.1
+
 django-modeladmin-reorder==0.3.1
 
