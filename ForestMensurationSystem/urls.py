@@ -28,7 +28,7 @@ urlpatterns = [
     path('viewdb', views.viewDataBase, name='view'),
     
 
-    path('grappelli/', include('grappelli.urls')), # grappelli URLS
+    #path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('', admin.site.urls),
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
