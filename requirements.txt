@@ -16,7 +16,7 @@ django-cors-headers==3.11.0
 django-extensions
 django-import-export
 keras
-tensorflow-cpu
+tensorflow ==2.0.0
 Pillow
 
 
