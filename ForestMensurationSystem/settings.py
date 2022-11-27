@@ -33,7 +33,7 @@ SESSION_COOKIE_AGE = 180
 
 SESSION_SAVE_EVERY_REQUEST = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application references
