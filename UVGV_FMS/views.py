@@ -34,7 +34,7 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 
 img_height, img_width = 224, 224
-with open('UVGV_FMS/models/labels.json', 'r') as f:
+with open('./UVGV_FMS/models/labels.json', 'r') as f:
     labelInfo = f.read()
 
 labelInfo = json.loads(labelInfo)
@@ -46,7 +46,7 @@ with model_graph.as_default():
     tf_session = tf.compat.v1.Session()
 
     with tf_session.as_default():
-        model=load_model('UVGV_FMS/models/keras_model.h5',compile=False)
+        model=load_model('./UVGV_FMS/models/keras_model.h5',compile=False)
 
 # Create your views here.
 #@receiver(post_save, sender=pickupload)
